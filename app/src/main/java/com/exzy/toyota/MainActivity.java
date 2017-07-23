@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     tempPuase = progressBar_video1.getProgress();
                     play_icon1.setVisibility(View.VISIBLE);
 //                    image1_filter.setVisibility(View.VISIBLE);
+
                     QuickAnim.fadeIn(image1_filter, new OnAnimationEndListener() {
                         @Override
                         public void onAnimationEnd(Animation animation) {
@@ -173,16 +174,21 @@ public class MainActivity extends AppCompatActivity {
                 } else if (firstIn) {
                     Log.e("Width", image1.getWidth()+"");
                     Log.e("Height", image1.getHeight()+"");
-                    QuickAnim.scale(image1, 1.1f, null);
-                    QuickAnim.scale(border1, 1.1f, null);
+                    QuickAnim.scale(image1, 1.0f, new OnAnimationEndListener() {
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            QuickAnim.fadeIn(border1, null);
+                        }
+                    });
+                    QuickAnim.scale(border1, 1.0f, null);
 //                    QuickAnim.scale(progressBar_video1, 1.4f, new OnAnimationEndListener() {
 //                        @Override
 //                        public void onAnimationEnd(Animation animation) {
 //
 //                        }
 //                    });
-                    QuickAnim.scale(text_playing_video1, 1.1f, null);
-                    QuickAnim.scale(play_icon1, 1.1f, null);
+                    QuickAnim.scale(text_playing_video1, 1.0f, null);
+                    QuickAnim.scale(play_icon1, 1.0f, null);
 
                     image2_filter.setVisibility(View.INVISIBLE);
                     image3_filter.setVisibility(View.INVISIBLE);
@@ -214,22 +220,29 @@ public class MainActivity extends AppCompatActivity {
                     startTime = System.currentTimeMillis();
                     progressBar_video1.setMax(TIME_VIDEO1);
                     play_icon1.setVisibility(View.INVISIBLE);
-                    QuickAnim.scale(text_filter_video1, 1.5f, new OnAnimationEndListener() {
+                    QuickAnim.scale(text_filter_video1, 1.0f, new OnAnimationEndListener() {
                         @Override
                         public void onAnimationEnd(Animation animation) {
                             QuickAnim.fadeOut(text_filter_video1, 300, true, null);
                         }
                     });
 //                    text_filter_video1.setVisibility(View.INVISIBLE);
-                    QuickAnim.scale(filter_video1, 1.5f, new OnAnimationEndListener() {
+                    QuickAnim.scaleAndFade(filter_video1, 100, 1.17f, 1.0f, 1.0f, new OnAnimationEndListener() {
                         @Override
                         public void onAnimationEnd(Animation animation) {
-                            QuickAnim.slideInXAxisTo(filter_video1, 2000, 500, false, null);
+//                            QuickAnim.slideInXAxisTo(filter_video1, 2000, 600, false, null);
+                            QuickAnim.fadeOut(filter_video1,false,null);
                         }
                     });
+//                    QuickAnim.scale(filter_video1, 1.1f, new OnAnimationEndListener() {
+//                        @Override
+//                        public void onAnimationEnd(Animation animation) {
+//                            QuickAnim.slideInXAxisTo(filter_video1, 2000, 500, false, null);
+//                        }
+//                    });
 //                    filter_video1.setVisibility(View.INVISIBLE);
 //                    progressBar_video1.setVisibility(View.VISIBLE);
-                    QuickAnim.slideYAxisTo(progressBar_video1, 600, -50, 0.7f, new OnAnimationEndListener() {
+                    QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0.7f, new OnAnimationEndListener() {
                         @Override
                         public void onAnimationEnd(Animation animation) {
 //                            text_playing_video1.setVisibility(View.VISIBLE);
@@ -242,19 +255,41 @@ public class MainActivity extends AppCompatActivity {
                     seek1_update();
                     firstIn = false;
                 } else if (!video1_isPlay && !firstIn) {
-                    QuickAnim.scale(image1, 1.1f, null);
-                    QuickAnim.scale(border1, 1.1f, null);
-                    QuickAnim.scale(text_playing_video1, 1.1f, null);
-                    QuickAnim.scale(play_icon1, 1.1f, null);
-                    QuickAnim.fadeOut(text_filter_video1, 300, true, null);
-                    QuickAnim.slideInXAxisTo(filter_video1, 2000, 500, false, null);
-                    QuickAnim.slideYAxisTo(progressBar_video1, 600, -50, 0.7f, new OnAnimationEndListener() {
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
+                    QuickAnim.scale(border1, 1.0f, null);
+                    QuickAnim.scale(text_playing_video1, 1.0f, null);
+                    QuickAnim.scale(play_icon1, 1.0f, null);
+                    QuickAnim.fadeOut(text_filter_video1, 300, false, null);
+                    if(progressBar_video1.getProgress() == 0) {
+                        QuickAnim.scaleAndFade(filter_video1, 100, 1.17f, 1.0f, 1.0f, new OnAnimationEndListener() {
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+//                            QuickAnim.slideInXAxisTo(filter_video1, 2000, 600, false, null);
+                                QuickAnim.fadeOut(filter_video1,false,null);
+                            }
+                        });
+                        QuickAnim.scale(image1, 1.0f, new OnAnimationEndListener() {
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                QuickAnim.fadeIn(border1, null);
+                            }
+                        });
+                        QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0.7f, new OnAnimationEndListener() {
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
 //                            text_playing_video1.setVisibility(View.VISIBLE);
-                            QuickAnim.fadeIn(text_playing_video1, null);
-                        }
-                    });
+                                QuickAnim.fadeIn(text_playing_video1, null);
+                            }
+                        });
+                    }
+//                    QuickAnim.slideInXAxisTo(filter_video1, 2000, 500, false, null);
+//                    progressBar_video1.setVisibility(View.VISIBLE);
+//                    QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0.7f, new OnAnimationEndListener() {
+//                        @Override
+//                        public void onAnimationEnd(Animation animation) {
+////                            text_playing_video1.setVisibility(View.VISIBLE);
+//                            QuickAnim.fadeIn(text_playing_video1, null);
+//                        }
+//                    });
 
                     video1_isPlay = true;
                     text_playing_video1.setText("PLAYING . . .");
@@ -266,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
 //                    text_playing_video1.setVisibility(View.VISIBLE);
 //                    border1.setVisibility(View.VISIBLE);
 //                    image1_filter.setVisibility(View.INVISIBLE);
-                    QuickAnim.fadeOut(image1_filter, true, null);
+                    QuickAnim.fadeOut(image1_filter, false, null);
                     seek1_update();
                 }
             }
@@ -479,14 +514,24 @@ public class MainActivity extends AppCompatActivity {
                 tempPuase = 0;
                 image2.setImageBitmap(oImage2);
                 image3.setImageBitmap(oImage3);
-                play_icon1.setVisibility(View.VISIBLE);
+//                play_icon1.setVisibility(View.VISIBLE);
+                QuickAnim.fadeIn(play_icon1,null);
 //                text_filter_video1.setVisibility(View.VISIBLE);
                 QuickAnim.fadeIn(text_filter_video1, null);
-                QuickAnim.slideInXAxisTo(filter_video1, 2000, 0, false, null);
+                QuickAnim.scaleAndFade(filter_video1, 300, 0.91f, 0.91f, 1.0f, null);
 //                filter_video1.setVisibility(View.VISIBLE);
-                progressBar_video1.setVisibility(View.INVISIBLE);
-                text_playing_video1.setVisibility(View.INVISIBLE);
-                border1.setVisibility(View.INVISIBLE);
+//                progressBar_video1.setVisibility(View.INVISIBLE);
+                QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0, new OnAnimationEndListener() {
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+//                            text_playing_video1.setVisibility(View.VISIBLE);
+//                        QuickAnim.fadeIn(text_playing_video1, null);
+                    }
+                });
+//                QuickAnim.fadeOut(progressBar_video1,false,null);
+                QuickAnim.fadeOut(text_playing_video1,false,null);
+//                text_playing_video1.setVisibility(View.INVISIBLE);
+//                border1.setVisibility(View.INVISIBLE);
                 image2.setAlpha(1.0f);
                 image3.setAlpha(1.0f);
                 play_icon2.setAlpha(1.0f);
@@ -496,28 +541,16 @@ public class MainActivity extends AppCompatActivity {
                 text_filter_video2.setAlpha(1.0f);
                 text_filter_video3.setAlpha(1.0f);
 
-                filter_video1.setAlpha(1.0f);
-                text_filter_video1.setAlpha(1.0f);
+//                filter_video1.setAlpha(1.0f);
+//                text_filter_video1.setAlpha(1.0f);
+//                text_filter_video1.setScaleX(1.0f);
+//                text_filter_video1.setScaleY(1.0f);
 
-                QuickAnim.scale(image1, 1.0f, new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-                        QuickAnim.scale(border1, 1.0f, new OnAnimationEndListener() {
-                            @Override
-                            public void onAnimationEnd(Animation animation) {
-                                QuickAnim.fadeOut(border1, true,null);
-                            }
-                        });
-                    }
-
+                QuickAnim.scale(image1, 0.91f, null);
+                QuickAnim.scale(border1, 0.91f, new OnAnimationEndListener() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
+                        QuickAnim.fadeOut(border1, false,null);
                     }
                 });
                 text_playing_video1.setScaleX(1.0f);

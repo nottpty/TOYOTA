@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-6dp"
+            android:paddingBottom="20dp"
             android:paddingLeft="54dp"
             android:text="LEAD YOU BETTER CAR LIFE"
             android:textColor="@android:color/white"
@@ -36,42 +37,86 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="30dp">
-
-            <ImageView
-                android:id="@+id/image1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginTop="22dp"
-                android:adjustViewBounds="false"
-                android:scaleType="fitXY"
-                app:srcCompat="@mipmap/pic1" />
-
-            <ImageView
-                android:id="@+id/image1_filter"
-                android:layout_width="match_parent"
-                android:layout_height="270dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="17dp"
-                android:layout_marginRight="17dp"
-                android:layout_marginTop="20dp"
-                android:adjustViewBounds="false"
-                android:alpha="0"
-                android:scaleType="fitXY"
-                android:visibility="visible"
-                app:srcCompat="@mipmap/pause_black_filter" />
+            android:layout_height="wrap_content">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="19dp">
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentTop="false"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:adjustViewBounds="false"
+                    android:scaleType="fitXY"
+                    android:scaleX="0.91"
+                    android:scaleY="0.91"
+                    app:srcCompat="@mipmap/pic1" />
+
+                <ImageView
+                    android:id="@+id/image1_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentTop="false"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="false"
+                    android:alpha="0"
+                    android:scaleType="fitXY"
+                    android:visibility="visible"
+                    app:srcCompat="@mipmap/pause_black_filter" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar_video1"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="58dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:alpha="0"
+                    android:background="@android:color/background_dark"
+                    android:minHeight="1dp"
+                    android:progress="30"
+                    android:progressBackgroundTint="@android:color/black"
+                    android:progressTint="@color/playing_TOYOTA"
+                    android:scaleY="18"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/border_video1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="false"
+                    android:alpha="0"
+                    android:scaleType="fitXY"
+                    android:scaleX="0.91"
+                    android:scaleY="0.91"
+                    android:visibility="visible"
+                    app:srcCompat="@mipmap/frame_big" />
+
+                <TextView
+                    android:id="@+id/text_playing_video1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="35dp"
+                    android:alpha="0"
+                    android:text="PLAYING . . ."
+                    android:textColor="@android:color/white"
+                    android:textSize="36sp"
+                    android:visibility="visible" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <ProgressBar
                     android:id="@+id/progressBar_video1_2"
@@ -79,9 +124,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="63dp"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginRight="22dp"
                     android:alpha="0.7"
                     android:max="100"
                     android:minHeight="0dp"
@@ -90,43 +132,32 @@
                     android:scaleY="16"
                     android:visibility="invisible" />
 
-                <ProgressBar
-                    android:id="@+id/progressBar_video1"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="18dp"
-                    android:alpha="0"
-                    android:background="@android:color/background_dark"
-                    android:minHeight="0dp"
-                    android:progressBackgroundTint="@android:color/black"
-                    android:progressTint="@color/playing_TOYOTA"
-                    android:scaleY="16"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/text_playing_video1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="103dp"
-                    android:alpha="0"
-                    android:text="PLAYING . . ."
-                    android:textColor="@android:color/white"
-                    android:textSize="36sp"
-                    android:visibility="visible" />
             </FrameLayout>
 
             <ImageView
-                android:id="@+id/border_video1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
+                android:id="@+id/filter_video1"
+                android:layout_width="300dp"
+                android:layout_height="265dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="247dp"
+                android:layout_weight="1"
                 android:adjustViewBounds="false"
-                android:visibility="invisible"
-                app:srcCompat="@mipmap/frame_big" />
+                android:scaleType="fitXY"
+                android:scaleX="0.91"
+                android:scaleY="0.91"
+                app:srcCompat="@mipmap/pic_filter" />
+
+            <TextView
+                android:id="@+id/text_filter_video1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="105dp"
+                android:lineSpacingExtra="-13sp"
+                android:text="IMPROVE DRIVE\nSAFETY"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
 
             <ImageView
                 android:id="@+id/play_video1"
@@ -134,38 +165,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 app:srcCompat="@mipmap/play_icon" />
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="52dp"
-                android:layout_marginTop="34dp">
-
-                <ImageView
-                    android:id="@+id/filter_video1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@mipmap/pic_filter" />
-
-                <TextView
-                    android:id="@+id/text_filter_video1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:lineSpacingExtra="-13sp"
-                    android:text="IMPROVE DRIVE\nSAFETY"
-                    android:textColor="@android:color/white"
-                    android:textSize="30sp" />
-            </FrameLayout>
-
-            <SeekBar
-                android:id="@+id/seekBar_video1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="15dp"
-                android:visibility="invisible" />
 
         </FrameLayout>
 
