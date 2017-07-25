@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout container1, container2, container3;
     private VideoView video_bg;
     private ImageView light_img;
+    private boolean emptyStatus;
 //    private int countDot;
 
     private final int TCP_PORT = 13000;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initComponents() {
 //        countDot = 0;
+        emptyStatus = true;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         video_bg = (VideoView) findViewById(R.id.video_bg);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.bg);
@@ -165,7 +167,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 client.send("1", IP_SERVER, TCP_PORT);
-                if (progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
+                if (emptyStatus) {
+                    emptyStatus = false;
                     QuickAnim.fadeIn(light_img, null);
                 }
                 QuickAnim.scale(container1, 1.1f, null);
@@ -274,7 +277,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 client.send("2", IP_SERVER, TCP_PORT);
-                if (progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
+                if (emptyStatus) {
+                    emptyStatus = false;
                     QuickAnim.fadeIn(light_img, null);
                 }
                 QuickAnim.scale(container2, 1.1f, null);
@@ -383,7 +387,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 client.send("3", IP_SERVER, TCP_PORT);
-                if (progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
+                if (emptyStatus) {
+                    emptyStatus = false;
                     QuickAnim.fadeIn(light_img, null);
                 }
                 QuickAnim.scale(container3, 1.1f, null);
@@ -495,6 +500,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Current time Video 1", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
 
             if (((System.currentTimeMillis() - startTime) / 1000) + tempPuase > progressBar_video1.getMax()) {
+                emptyStatus = true;
                 QuickAnim.fadeOut(light_img, false, null);
                 QuickAnim.scale(container1, 1.0f, null);
                 video1_isPlay = false;
@@ -535,6 +541,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Current time Video 2", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
 
             if (((System.currentTimeMillis() - startTime) / 1000) + tempPuase > progressBar_video2.getMax()) {
+                emptyStatus = true;
                 QuickAnim.fadeOut(light_img, false, null);
                 QuickAnim.scale(container2, 1.0f, null);
                 video2_isPlay = false;
@@ -575,6 +582,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Current time Video 3", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
 
             if (((System.currentTimeMillis() - startTime) / 1000) + tempPuase > progressBar_video3.getMax()) {
+                emptyStatus = true;
                 QuickAnim.fadeOut(light_img, false, null);
                 QuickAnim.scale(container3, 1.0f, null);
                 video3_isPlay = false;
