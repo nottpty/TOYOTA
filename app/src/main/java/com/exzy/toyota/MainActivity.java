@@ -2,6 +2,7 @@ package com.exzy.toyota;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -39,27 +40,27 @@ import java.io.PrintWriter;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView image1, image2, image3;
-//    private ProgressBar seekBar_video1, seekBar_video2, seekBar_video3;
-    private ProgressBar progressBar_video1,progressBar_video2,progressBar_video3;
+    private ProgressBar progressBar_video1, progressBar_video2, progressBar_video3;
     private ObjectAnimator progressAnimator1;
     private boolean video1_isPlay, video2_isPlay, video3_isPlay;
     private long startTime;
     private boolean firstIn;
     private int tempPuase;
     private String currentVideo;
-    private TextView topic,sup_topic,text_filter_video1,text_filter_video2,text_filter_video3;
-    private TextView text_playing_video1,text_playing_video2,text_playing_video3;
-    private ImageView border1,border2,border3;
-    private ImageView play_icon1,play_icon2,play_icon3;
-    private ImageView filter_video1,filter_video2,filter_video3;
-    private Bitmap bImage1,bImage2,bImage3,oImage1,oImage2,oImage3;
-    private ImageView image1_filter,image2_filter,image3_filter;
-    private final int TIME_VIDEO1 = 10;
-    private final int TIME_VIDEO2 = 10;
-    private final int TIME_VIDEO3 = 10;
-    private FrameLayout container1,container2,container3;
+    private TextView topic, sup_topic, text_filter_video1, text_filter_video2, text_filter_video3;
+    private TextView text_playing_video1, text_playing_video2, text_playing_video3;
+    private ImageView border1, border2, border3;
+    private ImageView play_icon1, play_icon2, play_icon3;
+    private ImageView filter_video1, filter_video2, filter_video3;
+    private Bitmap bImage1, bImage2, bImage3, oImage1, oImage2, oImage3;
+    private ImageView image1_filter, image2_filter, image3_filter;
+    private final int TIME_VIDEO1 = 161;
+    private final int TIME_VIDEO2 = 77;
+    private final int TIME_VIDEO3 = 23;
+    private FrameLayout container1, container2, container3;
     private VideoView video_bg;
     private ImageView light_img;
+//    private int countDot;
 
     private final int TCP_PORT = 13000;
     private final String IP_SERVER = "192.168.1.185";
@@ -76,10 +77,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initComponents() {
+//        countDot = 0;
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         video_bg = (VideoView) findViewById(R.id.video_bg);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.bg);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.bg);
         video_bg.setVideoURI(uri);
-        video_bg.setOnPreparedListener (new MediaPlayer.OnPreparedListener() {
+        video_bg.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.setLooping(true);
@@ -108,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
         filter_video1 = (ImageView) findViewById(R.id.filter_video1);
         filter_video2 = (ImageView) findViewById(R.id.filter_video2);
         filter_video3 = (ImageView) findViewById(R.id.filter_video3);
-        QuickAnim.expandViewWidthTo(filter_video1,450, 1000,false,null);
-        QuickAnim.expandViewWidthTo(filter_video2,450, 1000,false,null);
-        QuickAnim.expandViewWidthTo(filter_video3,450, 1000,false,null);
+        QuickAnim.expandViewWidthTo(filter_video1, 450, 1000, false, null);
+        QuickAnim.expandViewWidthTo(filter_video2, 450, 1000, false, null);
+        QuickAnim.expandViewWidthTo(filter_video3, 450, 1000, false, null);
 
         progressBar_video1 = (ProgressBar) findViewById(R.id.progressBar_video1);
         progressBar_video2 = (ProgressBar) findViewById(R.id.progressBar_video2);
@@ -161,7 +164,8 @@ public class MainActivity extends AppCompatActivity {
         image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
+                client.send("1", IP_SERVER, TCP_PORT);
+                if (progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
                     QuickAnim.fadeIn(light_img, null);
                 }
                 QuickAnim.scale(container1, 1.1f, null);
@@ -201,13 +205,13 @@ public class MainActivity extends AppCompatActivity {
                 } else if (firstIn) {
 
                     //about other components
-                    QuickAnim.fadeOut(border2, false,null);
-                    QuickAnim.fadeOut(border3, false,null);
-                    QuickAnim.expandViewWidthTo(filter_video2,450, 1000,false,null);
-                    QuickAnim.expandViewWidthTo(filter_video3,450, 1000,false,null);
+                    QuickAnim.fadeOut(border2, false, null);
+                    QuickAnim.fadeOut(border3, false, null);
+                    QuickAnim.expandViewWidthTo(filter_video2, 450, 1000, false, null);
+                    QuickAnim.expandViewWidthTo(filter_video3, 450, 1000, false, null);
 
-                    Log.e("Width", image1.getWidth()+"");
-                    Log.e("Height", image1.getHeight()+"");
+                    Log.e("Width", image1.getWidth() + "");
+                    Log.e("Height", image1.getHeight() + "");
                     progressBar_video1.setVisibility(View.VISIBLE);
                     QuickAnim.fadeIn(border1, null);
                     QuickAnim.fadeOut(play_icon1, false, null);
@@ -221,14 +225,6 @@ public class MainActivity extends AppCompatActivity {
                     QuickAnim.fadeOut(text_playing_video2, false, null);
                     QuickAnim.fadeOut(progressBar_video3, false, null);
                     QuickAnim.fadeOut(text_playing_video3, false, null);
-//                    play_icon2.setAlpha(0.5f);
-//                    play_icon3.setAlpha(0.5f);
-//                    filter_video2.setAlpha(0.5f);
-//                    text_filter_video2.setAlpha(0.5f);
-//                    filter_video3.setAlpha(0.5f);
-//                    text_filter_video3.setAlpha(0.5f);
-
-                    client.send("1", IP_SERVER, TCP_PORT);
                     tempPuase = 0;
                     progressBar_video1.setProgress(0);
                     progressBar_video2.setProgress(0);
@@ -238,8 +234,10 @@ public class MainActivity extends AppCompatActivity {
                     video3_isPlay = false;
                     startTime = System.currentTimeMillis();
                     progressBar_video1.setMax(TIME_VIDEO1);
+                    seek1_update();
+
                     QuickAnim.fadeOut(text_filter_video1, 100, false, null);
-                    QuickAnim.collapseViewWidth(filter_video1,1000,false,false,null);
+                    QuickAnim.collapseViewWidth(filter_video1, 1000, false, false, null);
 
                     QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0.7f, new OnAnimationEndListener() {
                         @Override
@@ -247,13 +245,12 @@ public class MainActivity extends AppCompatActivity {
                             QuickAnim.fadeIn(text_playing_video1, null);
                         }
                     });
-                    seek1_update();
                     firstIn = false;
                 } else if (!video1_isPlay && !firstIn) {
                     QuickAnim.fadeOut(play_icon1, 100, false, null);
                     QuickAnim.fadeOut(text_filter_video1, 300, false, null);
-                    if(progressBar_video1.getProgress() == 0) {
-                        QuickAnim.collapseViewWidth(filter_video1,1000,false,false,null);
+                    if (progressBar_video1.getProgress() == 0) {
+                        QuickAnim.collapseViewWidth(filter_video1, 1000, false, false, null);
                         QuickAnim.fadeIn(border1, null);
                         QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0.7f, new OnAnimationEndListener() {
                             @Override
@@ -264,10 +261,11 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     video1_isPlay = true;
+
                     text_playing_video1.setText("PLAYING . . .");
                     startTime = System.currentTimeMillis();
-                    QuickAnim.fadeOut(image1_filter, false, null);
                     seek1_update();
+                    QuickAnim.fadeOut(image1_filter, false, null);
                 }
             }
         });
@@ -275,7 +273,8 @@ public class MainActivity extends AppCompatActivity {
         image2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
+                client.send("2", IP_SERVER, TCP_PORT);
+                if (progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
                     QuickAnim.fadeIn(light_img, null);
                 }
                 QuickAnim.scale(container2, 1.1f, null);
@@ -315,13 +314,13 @@ public class MainActivity extends AppCompatActivity {
                 } else if (firstIn) {
 
                     //about other components
-                    QuickAnim.fadeOut(border1, false,null);
-                    QuickAnim.fadeOut(border3, false,null);
-                    QuickAnim.expandViewWidthTo(filter_video1,450, 1000,false,null);
-                    QuickAnim.expandViewWidthTo(filter_video3,450, 1000,false,null);
+                    QuickAnim.fadeOut(border1, false, null);
+                    QuickAnim.fadeOut(border3, false, null);
+                    QuickAnim.expandViewWidthTo(filter_video1, 450, 1000, false, null);
+                    QuickAnim.expandViewWidthTo(filter_video3, 450, 1000, false, null);
 
-                    Log.e("Width", image2.getWidth()+"");
-                    Log.e("Height", image2.getHeight()+"");
+                    Log.e("Width", image2.getWidth() + "");
+                    Log.e("Height", image2.getHeight() + "");
                     progressBar_video2.setVisibility(View.VISIBLE);
                     QuickAnim.fadeIn(border2, null);
                     QuickAnim.fadeOut(play_icon2, false, null);
@@ -336,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
                     QuickAnim.fadeOut(progressBar_video3, false, null);
                     QuickAnim.fadeOut(text_playing_video3, false, null);
 
-                    client.send("2", IP_SERVER, TCP_PORT);
+//                    client.send("2", IP_SERVER, TCP_PORT);
                     tempPuase = 0;
                     progressBar_video1.setProgress(0);
                     progressBar_video2.setProgress(0);
@@ -346,8 +345,9 @@ public class MainActivity extends AppCompatActivity {
                     video3_isPlay = false;
                     startTime = System.currentTimeMillis();
                     progressBar_video2.setMax(TIME_VIDEO2);
+                    seek2_update();
                     QuickAnim.fadeOut(text_filter_video2, 100, false, null);
-                    QuickAnim.collapseViewWidth(filter_video2,1000,false,false,null);
+                    QuickAnim.collapseViewWidth(filter_video2, 1000, false, false, null);
 
                     QuickAnim.slideYAxisTo(progressBar_video2, 600, 0, 0.7f, new OnAnimationEndListener() {
                         @Override
@@ -355,13 +355,12 @@ public class MainActivity extends AppCompatActivity {
                             QuickAnim.fadeIn(text_playing_video2, null);
                         }
                     });
-                    seek2_update();
                     firstIn = false;
                 } else if (!video2_isPlay && !firstIn) {
                     QuickAnim.fadeOut(play_icon2, 100, false, null);
                     QuickAnim.fadeOut(text_filter_video2, 300, false, null);
-                    if(progressBar_video2.getProgress() == 0) {
-                        QuickAnim.collapseViewWidth(filter_video2,1000,false,false,null);
+                    if (progressBar_video2.getProgress() == 0) {
+                        QuickAnim.collapseViewWidth(filter_video2, 1000, false, false, null);
                         QuickAnim.fadeIn(border2, null);
                         QuickAnim.slideYAxisTo(progressBar_video2, 600, 0, 0.7f, new OnAnimationEndListener() {
                             @Override
@@ -374,8 +373,8 @@ public class MainActivity extends AppCompatActivity {
                     video2_isPlay = true;
                     text_playing_video2.setText("PLAYING . . .");
                     startTime = System.currentTimeMillis();
-                    QuickAnim.fadeOut(image2_filter, false, null);
                     seek2_update();
+                    QuickAnim.fadeOut(image2_filter, false, null);
                 }
             }
         });
@@ -383,7 +382,8 @@ public class MainActivity extends AppCompatActivity {
         image3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
+                client.send("3", IP_SERVER, TCP_PORT);
+                if (progressBar_video1.getProgress() == 0 && progressBar_video2.getProgress() == 0 && progressBar_video3.getProgress() == 0) {
                     QuickAnim.fadeIn(light_img, null);
                 }
                 QuickAnim.scale(container3, 1.1f, null);
@@ -423,13 +423,13 @@ public class MainActivity extends AppCompatActivity {
                 } else if (firstIn) {
 
                     //about other components
-                    QuickAnim.fadeOut(border1, false,null);
-                    QuickAnim.fadeOut(border2, false,null);
-                    QuickAnim.expandViewWidthTo(filter_video1,450, 1000,false,null);
-                    QuickAnim.expandViewWidthTo(filter_video2,450, 1000,false,null);
+                    QuickAnim.fadeOut(border1, false, null);
+                    QuickAnim.fadeOut(border2, false, null);
+                    QuickAnim.expandViewWidthTo(filter_video1, 450, 1000, false, null);
+                    QuickAnim.expandViewWidthTo(filter_video2, 450, 1000, false, null);
 
-                    Log.e("Width", image3.getWidth()+"");
-                    Log.e("Height", image3.getHeight()+"");
+                    Log.e("Width", image3.getWidth() + "");
+                    Log.e("Height", image3.getHeight() + "");
                     progressBar_video3.setVisibility(View.VISIBLE);
                     QuickAnim.fadeIn(border3, null);
                     QuickAnim.fadeOut(play_icon3, false, null);
@@ -444,7 +444,7 @@ public class MainActivity extends AppCompatActivity {
                     QuickAnim.fadeOut(progressBar_video2, false, null);
                     QuickAnim.fadeOut(text_playing_video2, false, null);
 
-                    client.send("3", IP_SERVER, TCP_PORT);
+//                    client.send("3", IP_SERVER, TCP_PORT);
                     tempPuase = 0;
                     progressBar_video1.setProgress(0);
                     progressBar_video2.setProgress(0);
@@ -454,8 +454,9 @@ public class MainActivity extends AppCompatActivity {
                     video3_isPlay = true;
                     startTime = System.currentTimeMillis();
                     progressBar_video3.setMax(TIME_VIDEO3);
+                    seek3_update();
                     QuickAnim.fadeOut(text_filter_video3, 100, false, null);
-                    QuickAnim.collapseViewWidth(filter_video3,1000,false,false,null);
+                    QuickAnim.collapseViewWidth(filter_video3, 1000, false, false, null);
 
                     QuickAnim.slideYAxisTo(progressBar_video3, 600, 0, 0.7f, new OnAnimationEndListener() {
                         @Override
@@ -463,13 +464,12 @@ public class MainActivity extends AppCompatActivity {
                             QuickAnim.fadeIn(text_playing_video3, null);
                         }
                     });
-                    seek3_update();
                     firstIn = false;
                 } else if (!video3_isPlay && !firstIn) {
                     QuickAnim.fadeOut(play_icon3, 100, false, null);
                     QuickAnim.fadeOut(text_filter_video3, 300, false, null);
-                    if(progressBar_video3.getProgress() == 0) {
-                        QuickAnim.collapseViewWidth(filter_video3,1000,false,false,null);
+                    if (progressBar_video3.getProgress() == 0) {
+                        QuickAnim.collapseViewWidth(filter_video3, 1000, false, false, null);
                         QuickAnim.fadeIn(border3, null);
                         QuickAnim.slideYAxisTo(progressBar_video3, 600, 0, 0.7f, new OnAnimationEndListener() {
                             @Override
@@ -480,10 +480,10 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     video3_isPlay = true;
-                    text_playing_video3.setText("PLAYING . . .");
                     startTime = System.currentTimeMillis();
-                    QuickAnim.fadeOut(image3_filter, false, null);
                     seek3_update();
+                    text_playing_video3.setText("PLAYING . . .");
+                    QuickAnim.fadeOut(image3_filter, false, null);
                 }
             }
         });
@@ -495,19 +495,19 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Current time Video 1", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
 
             if (((System.currentTimeMillis() - startTime) / 1000) + tempPuase > progressBar_video1.getMax()) {
-                QuickAnim.fadeOut(light_img,false,null);
-                QuickAnim.scale(container1,1.0f,null);
+                QuickAnim.fadeOut(light_img, false, null);
+                QuickAnim.scale(container1, 1.0f, null);
                 video1_isPlay = false;
                 progressBar_video1.setProgress(0);
                 tempPuase = 0;
                 image2.setImageBitmap(oImage2);
                 image3.setImageBitmap(oImage3);
-                QuickAnim.fadeIn(play_icon1,null);
+                QuickAnim.fadeIn(play_icon1, null);
                 QuickAnim.fadeIn(text_filter_video1, null);
                 filter_video1.setAlpha(1.0f);
-                QuickAnim.expandViewWidthTo(filter_video1,450, 1000,false,null);
+                QuickAnim.expandViewWidthTo(filter_video1, 450, 1000, false, null);
                 QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0, null);
-                QuickAnim.fadeOut(text_playing_video1,false,null);
+                QuickAnim.fadeOut(text_playing_video1, false, null);
                 image2.setAlpha(1.0f);
                 image3.setAlpha(1.0f);
                 play_icon2.setAlpha(1.0f);
@@ -516,7 +516,7 @@ public class MainActivity extends AppCompatActivity {
                 filter_video3.setAlpha(1.0f);
                 text_filter_video2.setAlpha(1.0f);
                 text_filter_video3.setAlpha(1.0f);
-                QuickAnim.fadeOut(border1, false,null);
+                QuickAnim.fadeOut(border1, false, null);
             }
 
             Runnable r = new Runnable() {
@@ -535,19 +535,19 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Current time Video 2", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
 
             if (((System.currentTimeMillis() - startTime) / 1000) + tempPuase > progressBar_video2.getMax()) {
-                QuickAnim.fadeOut(light_img,false,null);
-                QuickAnim.scale(container2,1.0f,null);
+                QuickAnim.fadeOut(light_img, false, null);
+                QuickAnim.scale(container2, 1.0f, null);
                 video2_isPlay = false;
                 progressBar_video2.setProgress(0);
                 tempPuase = 0;
                 image1.setImageBitmap(oImage1);
                 image3.setImageBitmap(oImage3);
-                QuickAnim.fadeIn(play_icon2,null);
+                QuickAnim.fadeIn(play_icon2, null);
                 QuickAnim.fadeIn(text_filter_video2, null);
                 filter_video2.setAlpha(1.0f);
-                QuickAnim.expandViewWidthTo(filter_video2,450, 1000,false,null);
+                QuickAnim.expandViewWidthTo(filter_video2, 450, 1000, false, null);
                 QuickAnim.slideYAxisTo(progressBar_video2, 600, 0, 0, null);
-                QuickAnim.fadeOut(text_playing_video2,false,null);
+                QuickAnim.fadeOut(text_playing_video2, false, null);
                 image1.setAlpha(1.0f);
                 image3.setAlpha(1.0f);
                 play_icon1.setAlpha(1.0f);
@@ -556,7 +556,7 @@ public class MainActivity extends AppCompatActivity {
                 filter_video3.setAlpha(1.0f);
                 text_filter_video1.setAlpha(1.0f);
                 text_filter_video3.setAlpha(1.0f);
-                QuickAnim.fadeOut(border2, false,null);
+                QuickAnim.fadeOut(border2, false, null);
             }
 
             Runnable r = new Runnable() {
@@ -575,19 +575,19 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Current time Video 3", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
 
             if (((System.currentTimeMillis() - startTime) / 1000) + tempPuase > progressBar_video3.getMax()) {
-                QuickAnim.fadeOut(light_img,false,null);
-                QuickAnim.scale(container3,1.0f,null);
+                QuickAnim.fadeOut(light_img, false, null);
+                QuickAnim.scale(container3, 1.0f, null);
                 video3_isPlay = false;
                 progressBar_video3.setProgress(0);
                 tempPuase = 0;
                 image1.setImageBitmap(oImage1);
                 image2.setImageBitmap(oImage2);
-                QuickAnim.fadeIn(play_icon3,null);
+                QuickAnim.fadeIn(play_icon3, null);
                 QuickAnim.fadeIn(text_filter_video3, null);
                 filter_video3.setAlpha(1.0f);
-                QuickAnim.expandViewWidthTo(filter_video3,450, 1000,false,null);
+                QuickAnim.expandViewWidthTo(filter_video3, 450, 1000, false, null);
                 QuickAnim.slideYAxisTo(progressBar_video3, 600, 0, 0, null);
-                QuickAnim.fadeOut(text_playing_video3,false,null);
+                QuickAnim.fadeOut(text_playing_video3, false, null);
                 image1.setAlpha(1.0f);
                 image2.setAlpha(1.0f);
                 play_icon1.setAlpha(1.0f);
@@ -596,7 +596,7 @@ public class MainActivity extends AppCompatActivity {
                 filter_video2.setAlpha(1.0f);
                 text_filter_video1.setAlpha(1.0f);
                 text_filter_video2.setAlpha(1.0f);
-                QuickAnim.fadeOut(border3, false,null);
+                QuickAnim.fadeOut(border3, false, null);
             }
 
             Runnable r = new Runnable() {
@@ -608,6 +608,30 @@ public class MainActivity extends AppCompatActivity {
             new Handler().postDelayed(r, 1000);
         }
     }
+    /**
+     * Still need fix bug
+     */
+//    public void updateText() {
+//        if (video1_isPlay) {
+//            String text = "";
+//            if (countDot > 3) {
+//                text = "PLAYING";
+//                countDot = 0;
+//            } else {
+//                text = text_playing_video1.getText().toString() + " .";
+//            }
+//            text_playing_video1.setText(text);
+//            countDot++;
+//        }
+//
+//        Runnable r = new Runnable() {
+//            @Override
+//            public void run() {
+//                updateText();
+//            }
+//        };
+//        new Handler().postDelayed(r, 600);
+//    }
 
     /**
      * Set full screen.
