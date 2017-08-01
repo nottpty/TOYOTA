@@ -180,7 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
-                        android:layout_marginBottom="23dp"
+                        android:layout_marginBottom="24dp"
                         android:alpha="0"
                         android:text="PLAYING . . ."
                         android:textColor="@android:color/white"
@@ -295,7 +295,6 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:scaleType="fitXY"
-                        android:scaleX="1"
                         app:srcCompat="@mipmap/line_blue" />
 
                     <ProgressBar
@@ -446,7 +445,6 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:scaleType="fitXY"
-                        android:scaleX="1"
                         app:srcCompat="@mipmap/line_blue" />
 
                     <ProgressBar
