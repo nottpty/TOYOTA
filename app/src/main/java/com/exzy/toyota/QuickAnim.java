@@ -13,6 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -662,6 +663,32 @@ public class QuickAnim {
 
 	public static void expandViewWidthTo(final View v, final int widthToExpand, final long duration, final boolean withFade, AnimationListener al) {
 		expandViewWidthBy(v, widthToExpand - v.getLayoutParams().width, duration, withFade, al);
+	}
+
+	public static void expandViewWidthTo2(final View v, final int widthToExpand, final long duration, final boolean withFade, AnimationListener al) {
+		expandViewWidthBy2(v, widthToExpand - v.getLayoutParams().width, duration, withFade, al);
+	}
+
+	private static void expandViewWidthBy2(final View v, final int widthPixelToExpand, final long duration, final boolean withFade, AnimationListener al) {
+		final int initWidth = v.getLayoutParams().width;
+		Animation a = new Animation() {
+			@Override
+			protected void applyTransformation(float interpolatedTime, Transformation t) {
+				if (withFade) v.setAlpha(interpolatedTime);
+				v.getLayoutParams().width = (int) Math.ceil(widthPixelToExpand * interpolatedTime) + initWidth;
+				v.requestLayout();
+			}
+
+			@Override
+			public boolean willChangeBounds() {
+				return true;
+			}
+		};
+
+		a.setDuration(duration);
+		a.setInterpolator(new LinearInterpolator());
+		a.setAnimationListener(al);
+		v.startAnimation(a);
 	}
 
 	public static void scale(final View v, final float scaleSize, AnimationListener al) {
