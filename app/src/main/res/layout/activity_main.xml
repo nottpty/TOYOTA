@@ -180,11 +180,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
-                        android:layout_marginBottom="24dp"
+                        android:layout_marginBottom="23dp"
                         android:alpha="0"
                         android:text="PLAYING . . ."
                         android:textColor="@android:color/white"
-                        android:textSize="24sp"
+                        android:textSize="30sp"
                         android:visibility="visible" />
 
                 </FrameLayout>
@@ -202,15 +202,27 @@
                     app:srcCompat="@mipmap/pic_filter" />
 
                 <TextView
-                    android:id="@+id/text_filter_video1"
+                    android:id="@+id/text_filter_video1_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginRight="43dp"
+                    android:layout_marginTop="-5dp"
                     android:lineSpacingExtra="-13sp"
-                    android:text="IMPROVE DRIVE\nSAFETY"
+                    android:text="TOYOTA T-CONNECT"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/text_filter_video1_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="53dp"
+                    android:layout_marginTop="15dp"
+                    android:text="TELEMATICS FUNCTIONS"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp" />
 
                 <ImageView
                     android:id="@+id/pause_video1"
@@ -353,15 +365,28 @@
                     app:srcCompat="@mipmap/pic_filter" />
 
                 <TextView
-                    android:id="@+id/text_filter_video2"
+                    android:id="@+id/text_filter_video2_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginRight="80dp"
+                    android:layout_marginTop="-5dp"
                     android:lineSpacingExtra="-13sp"
-                    android:text="IMPROVE DRIVE\nSAFETY"
+                    android:text="FUTURE VISION:"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/text_filter_video2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="95dp"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="-13sp"
+                    android:text="CONNECTED 20XX"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp" />
 
                 <ImageView
                     android:id="@+id/pause_video2"
@@ -503,15 +528,28 @@
                     app:srcCompat="@mipmap/pic_filter" />
 
                 <TextView
-                    android:id="@+id/text_filter_video3"
+                    android:id="@+id/text_filter_video3_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginRight="63dp"
+                    android:layout_marginTop="-5dp"
                     android:lineSpacingExtra="-13sp"
-                    android:text="IMPROVE DRIVE\nSAFETY"
+                    android:text="SMART MOBILITY:"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/text_filter_video3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="130dp"
+                    android:layout_marginTop="15dp"
+                    android:lineSpacingExtra="-13sp"
+                    android:text="HAMO 20XX"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/pause_video3"
