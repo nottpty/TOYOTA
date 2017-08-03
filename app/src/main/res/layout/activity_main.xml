@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="54dp"
                         android:paddingTop="15dp"
-                        android:text="TOYOTA TELEMAYICS SYSTEM"
+                        android:text="TOYOTA TELEMATICS SYSTEM"
                         android:textColor="@android:color/white"
                         android:textSize="36sp" />
 
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:paddingBottom="32dp"
                         android:paddingLeft="54dp"
-                        android:text="LEAD YOU BETTER CAR LIFE"
+                        android:text="CONNECT TO FUTURE DRIVING"
                         android:textColor="@android:color/white"
                         android:textSize="19sp" />
                 </LinearLayout>
