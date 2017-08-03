@@ -75,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final SimpleTCPClient client = new SimpleTCPClient();
     private final int TCP_PORT = 13000;
-//    private final String IP_SERVER = "192.168.0.100";
-private final String IP_SERVER = "192.168.1.185";
+    private final String IP_SERVER = "192.168.0.100";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
