@@ -482,20 +482,8 @@ public class MainActivity extends AppCompatActivity {
                     progress2.setVisibility(View.VISIBLE);
                     progress2.setAlpha(1.0f);
                     QuickAnim.fadeIn(border2, null);
-//                    QuickAnim.fadeOut(play_icon2, false, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeIn(pause_icon2, null);
-//                        }
-//                    });
                     play_icon2.setImageBitmap(pauseImg);
                     play_icon2.setAlpha(0.75f);
-//                    QuickAnim.changeImageWithFade(play_icon2, pauseImg, 300, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeTo(play_icon2, 300, 0.5f, null);
-//                        }
-//                    });
 
                     QuickAnim.fadeOut(image1_filter, false, null);
                     QuickAnim.fadeOut(image3_filter, false, null);
@@ -554,34 +542,10 @@ public class MainActivity extends AppCompatActivity {
                     seek2_update();
                     firstIn = false;
                 } else if (!video2_isPlay && !firstIn) {
-//                    QuickAnim.fadeIn(pause_icon2, null);
-
-//                    QuickAnim.fadeOut(play_icon2, 100, false, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeIn(pause_icon2, null);
-//                        }
-//                    });
                     play_icon2.setImageBitmap(pauseImg);
                     play_icon2.setAlpha(0.75f);
-//                    QuickAnim.changeImageWithFade(play_icon2, pauseImg, 300, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeTo(play_icon2, 300, 0.5f, null);
-//                        }
-//                    });
                     QuickAnim.fadeOut(text_filter_video2_1, 300, false, null);
                     QuickAnim.fadeOut(text_filter_video2_2, 300, false, null);
-//                    if (progressBar_video2.getProgress() == 0) {
-//                        QuickAnim.collapseViewWidth(filter_video2, 1000, false, false, null);
-//                        QuickAnim.fadeIn(border2, null);
-//                        QuickAnim.slideYAxisTo(progressBar_video2, 600, 0, 0.7f, new OnAnimationEndListener() {
-//                            @Override
-//                            public void onAnimationEnd(Animation animation) {
-//                                QuickAnim.fadeIn(text_playing_video2, null);
-//                            }
-//                        });
-//                    }
                     if (progress2.getWidth() == 0) {
                         QuickAnim.collapseViewWidth(filter_video2, 1000, false, false, null);
                         QuickAnim.fadeIn(border2, null);
@@ -639,21 +603,9 @@ public class MainActivity extends AppCompatActivity {
                 text_filter_video2_2.setVisibility(View.VISIBLE);
                 if (currentVideo.equals("1")) {
                     play_icon1.setImageBitmap(playImg);
-//                    QuickAnim.changeImageWithFade(play_icon1, playImg, 300, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeTo(play_icon1, 300, 0.5f, null);
-//                        }
-//                    });
                 }
                 if (currentVideo.equals("2")) {
                     play_icon2.setImageBitmap(playImg);
-//                    QuickAnim.changeImageWithFade(play_icon2, playImg, 300, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeTo(play_icon2, 300, 0.5f, null);
-//                        }
-//                    });
                 }
                 play_icon1.setAlpha(0.5f);
                 play_icon1.setVisibility(View.VISIBLE);
@@ -669,35 +621,20 @@ public class MainActivity extends AppCompatActivity {
                 if (firstIn) {
                     animationButton3();
                 }
-//                QuickAnim.changeImageWithFade(play_icon1, playImg, 300 ,null);
-//                QuickAnim.changeImageWithFade(play_icon2, playImg, 300 ,null);
                 if (video3_isPlay) {
                     video3_isPlay = false;
                     firstIn = false;
                     tempPuase = progressBar_video3.getProgress();
-//                    QuickAnim.fadeOut(pause_icon3, false, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeIn(play_icon3, null);
-//                        }
-//                    });
-
-                    // test
-//                    timeUsed3 = TIME_VIDEO3 - timer3 + 1;
                     pauseProgress3();
 
                     play_icon3.setImageBitmap(playImg);
                     play_icon3.setAlpha(1.0f);
-//                    QuickAnim.changeImageWithFade(play_icon3, playImg, 300 ,null);
 
                     QuickAnim.fadeIn(image3_filter, null);
 
                     text_playing_video3.setText("PAUSE");
                     Log.e("temp", tempPuase + "");
                 } else if (firstIn) {
-//                    timer1 = 0;
-//                    timer2 = 0;
-//                    timer3 = 0;
                     Log.e("time used3",timeUsed3+"");
 
                     //about other components
@@ -713,20 +650,8 @@ public class MainActivity extends AppCompatActivity {
                     progress3.setVisibility(View.VISIBLE);
                     progress3.setAlpha(1.0f);
                     QuickAnim.fadeIn(border3, null);
-//                    QuickAnim.fadeOut(play_icon3, false, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeIn(pause_icon3, null);
-//                        }
-//                    });
                     play_icon3.setImageBitmap(pauseImg);
                     play_icon3.setAlpha(0.75f);
-//                    QuickAnim.changeImageWithFade(play_icon3, pauseImg, 300, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeTo(play_icon3, 300, 0.5f, null);
-//                        }
-//                    });
 
                     QuickAnim.fadeOut(image1_filter, false, null);
                     QuickAnim.fadeOut(image2_filter, false, null);
@@ -783,34 +708,10 @@ public class MainActivity extends AppCompatActivity {
                     seek3_update();
                     firstIn = false;
                 } else if (!video3_isPlay && !firstIn) {
-//                    QuickAnim.fadeIn(pause_icon3, null);
-
-//                    QuickAnim.fadeOut(play_icon3, 100, false, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeIn(pause_icon3, null);
-//                        }
-//                    });
                     play_icon3.setImageBitmap(pauseImg);
                     play_icon3.setAlpha(0.75f);
-//                    QuickAnim.changeImageWithFade(play_icon3, pauseImg, 300, new OnAnimationEndListener() {
-//                        @Override
-//                        public void onAnimationEnd(Animation animation) {
-//                            QuickAnim.fadeTo(play_icon3, 300, 0.5f, null);
-//                        }
-//                    });
                     QuickAnim.fadeOut(text_filter_video3_1, 300, false, null);
                     QuickAnim.fadeOut(text_filter_video3_2, 300, false, null);
-//                    if (progressBar_video3.getProgress() == 0) {
-//                        QuickAnim.collapseViewWidth(filter_video3, 1000, false, false, null);
-//                        QuickAnim.fadeIn(border3, null);
-//                        QuickAnim.slideYAxisTo(progressBar_video3, 600, 0, 0.7f, new OnAnimationEndListener() {
-//                            @Override
-//                            public void onAnimationEnd(Animation animation) {
-//                                QuickAnim.fadeIn(text_playing_video3, null);
-//                            }
-//                        });
-//                    }
                     if (progress3.getWidth() == 0) {
                         QuickAnim.collapseViewWidth(filter_video3, 1000, false, false, null);
                         QuickAnim.fadeIn(border3, null);
@@ -838,93 +739,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void seek1_update() {
-//        if (video1_isPlay) {
             QuickAnim.expandViewWidthTo2(progress1, MAX_DISTANCE_PROGRESS, timeUsed1 * 1000, false, new OnAnimationEndListener() {
                 @Override
                 public void onAnimationEnd(Animation animation) {
-//                    if (progressBar_video1.getProgress() == TIME_VIDEO1) {
-//                        currentVideo = "";
-//                        QuickAnim.changeImageWithFade(play_icon1, playImg, 300, null);
-//                        emptyStatus = true;
-//                        QuickAnim.fadeOut(light_img, false, null);
-//                        QuickAnim.scale(container1, 1.0f, null);
-//                        video1_isPlay = false;
-//                        progressBar_video1.setProgress(0);
-//                        tempPuase = 0;
-//                        image2.setImageBitmap(oImage2);
-//                        image3.setImageBitmap(oImage3);
-////                QuickAnim.fadeIn(play_icon1, null);
-//                        QuickAnim.fadeIn(text_filter_video1, null);
-//                        filter_video1.setAlpha(1.0f);
-//                        QuickAnim.expandViewWidthTo(filter_video1, 450, 1000, false, null);
-//                        QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0, null);
-//                        QuickAnim.fadeOut(progress1, false, new OnAnimationEndListener() {
-//                            @Override
-//                            public void onAnimationEnd(Animation animation) {
-//                                QuickAnim.collapseViewWidth(progress1, 500, false, false, null);
-//                            }
-//                        });
-//                        QuickAnim.slideYAxisTo(black_progress1, 600, 0, 0, null);
-//                        QuickAnim.fadeOut(text_playing_video1, false, null);
-//                        image2.setAlpha(1.0f);
-//                        image3.setAlpha(1.0f);
-//                        play_icon2.setAlpha(1.0f);
-//                        play_icon3.setAlpha(1.0f);
-//                        filter_video2.setAlpha(1.0f);
-//                        filter_video3.setAlpha(1.0f);
-//                        text_filter_video2.setAlpha(1.0f);
-//                        text_filter_video3.setAlpha(1.0f);
-//                        QuickAnim.fadeOut(border1, false, null);
-//                    }
                 }
             });
-//            progressBar_video1.setProgress((int) ((System.currentTimeMillis() - startTime) / 1000) + tempPuase);
-//            Log.e("Current time Video 1", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
-
-//            if (((System.currentTimeMillis() - startTime) / 1000) + tempPuase > progressBar_video1.getMax()) {
-//            if (timeUsed1 == 0) {
-//                currentVideo = "";
-//                QuickAnim.changeImageWithFade(play_icon1, playImg, 300, null);
-//                emptyStatus = true;
-//                QuickAnim.fadeOut(light_img, false, null);
-//                QuickAnim.scale(container1, 1.0f, null);
-//                video1_isPlay = false;
-//                progressBar_video1.setProgress(0);
-//                tempPuase = 0;
-//                image2.setImageBitmap(oImage2);
-//                image3.setImageBitmap(oImage3);
-////                QuickAnim.fadeIn(play_icon1, null);
-//                QuickAnim.fadeIn(text_filter_video1, null);
-//                filter_video1.setAlpha(1.0f);
-//                QuickAnim.expandViewWidthTo(filter_video1, 450, 1000, false, null);
-//                QuickAnim.slideYAxisTo(progressBar_video1, 600, 0, 0, null);
-//                QuickAnim.fadeOut(progress1, false, new OnAnimationEndListener() {
-//                    @Override
-//                    public void onAnimationEnd(Animation animation) {
-//                        QuickAnim.collapseViewWidth(progress1, 500, false, false, null);
-//                    }
-//                });
-//                QuickAnim.slideYAxisTo(black_progress1, 600, 0, 0, null);
-//                QuickAnim.fadeOut(text_playing_video1, false, null);
-//                image2.setAlpha(1.0f);
-//                image3.setAlpha(1.0f);
-//                play_icon2.setAlpha(1.0f);
-//                play_icon3.setAlpha(1.0f);
-//                filter_video2.setAlpha(1.0f);
-//                filter_video3.setAlpha(1.0f);
-//                text_filter_video2.setAlpha(1.0f);
-//                text_filter_video3.setAlpha(1.0f);
-//                QuickAnim.fadeOut(border1, false, null);
-//            }
-
-//            Runnable r = new Runnable() {
-//                @Override
-//                public void run() {
-//                    seek1_update();
-//                }
-//            };
-//            new Handler().postDelayed(r, 10000);
-//        }
     }
 
     public void pauseProgress1() {
@@ -1038,93 +857,11 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     public void seek2_update() {
-//        if (video2_isPlay) {
             QuickAnim.expandViewWidthTo2(progress2, MAX_DISTANCE_PROGRESS, timeUsed2 * 1000, false, new OnAnimationEndListener() {
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    Log.e("distance2",progress2.getWidth()+"");
-//                    if (timeUsed2 == TIME_VIDEO2) {
-//                        currentVideo = "";
-//                        QuickAnim.changeImageWithFade(play_icon2, playImg, 300, null);
-//                        emptyStatus = true;
-//                        QuickAnim.fadeOut(light_img, false, null);
-//                        QuickAnim.scale(container2, 1.0f, null);
-//                        video2_isPlay = false;
-//                        progressBar_video2.setProgress(0);
-//                        tempPuase = 0;
-//                        image1.setImageBitmap(oImage1);
-//                        image3.setImageBitmap(oImage3);
-////                QuickAnim.fadeIn(play_icon2, null);
-//                        QuickAnim.fadeIn(text_filter_video2, null);
-//                        filter_video2.setAlpha(1.0f);
-//                        QuickAnim.expandViewWidthTo(filter_video2, 450, 1000, false, null);
-//                        QuickAnim.slideYAxisTo(progressBar_video2, 600, 0, 0, null);
-//                        QuickAnim.fadeOut(progress2, false, new OnAnimationEndListener() {
-//                            @Override
-//                            public void onAnimationEnd(Animation animation) {
-//                                QuickAnim.collapseViewWidth(progress2, 500, false, false, null);
-//                            }
-//                        });
-//                        QuickAnim.slideYAxisTo(black_progress2, 600, 0, 0, null);
-//                        QuickAnim.fadeOut(text_playing_video2, false, null);
-//                        image1.setAlpha(1.0f);
-//                        image3.setAlpha(1.0f);
-//                        play_icon1.setAlpha(1.0f);
-//                        play_icon3.setAlpha(1.0f);
-//                        filter_video1.setAlpha(1.0f);
-//                        filter_video3.setAlpha(1.0f);
-//                        text_filter_video1.setAlpha(1.0f);
-//                        text_filter_video3.setAlpha(1.0f);
-//                        QuickAnim.fadeOut(border2, false, null);
-//                    }
                 }
             });
-//            progressBar_video2.setProgress((int) ((System.currentTimeMillis() - startTime) / 1000) + tempPuase);
-//            Log.e("Current time Video 2", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
-
-//            if (timeUsed2 == 0) {
-//                currentVideo = "";
-//                QuickAnim.changeImageWithFade(play_icon2, playImg, 300, null);
-//                emptyStatus = true;
-//                QuickAnim.fadeOut(light_img, false, null);
-//                QuickAnim.scale(container2, 1.0f, null);
-//                video2_isPlay = false;
-//                progressBar_video2.setProgress(0);
-//                tempPuase = 0;
-//                image1.setImageBitmap(oImage1);
-//                image3.setImageBitmap(oImage3);
-////                QuickAnim.fadeIn(play_icon2, null);
-//                QuickAnim.fadeIn(text_filter_video2, null);
-//                filter_video2.setAlpha(1.0f);
-//                QuickAnim.expandViewWidthTo(filter_video2, 450, 1000, false, null);
-//                QuickAnim.slideYAxisTo(progressBar_video2, 600, 0, 0, null);
-//                QuickAnim.fadeOut(progress2, false, new OnAnimationEndListener() {
-//                    @Override
-//                    public void onAnimationEnd(Animation animation) {
-//                        QuickAnim.collapseViewWidth(progress2, 500, false, false, null);
-//                    }
-//                });
-//                QuickAnim.slideYAxisTo(black_progress2, 600, 0, 0, null);
-//                QuickAnim.fadeOut(text_playing_video2, false, null);
-//                image1.setAlpha(1.0f);
-//                image3.setAlpha(1.0f);
-//                play_icon1.setAlpha(1.0f);
-//                play_icon3.setAlpha(1.0f);
-//                filter_video1.setAlpha(1.0f);
-//                filter_video3.setAlpha(1.0f);
-//                text_filter_video1.setAlpha(1.0f);
-//                text_filter_video3.setAlpha(1.0f);
-//                QuickAnim.fadeOut(border2, false, null);
-//            }
-
-//            Runnable r = new Runnable() {
-//                @Override
-//                public void run() {
-//                    seek2_update();
-//                }
-//            };
-//            new Handler().postDelayed(r, 1000);
-//        }
     }
 
     public void pauseProgress2() {
@@ -1187,92 +924,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void seek3_update() {
-//        if (video3_isPlay) {
-            QuickAnim.expandViewWidthTo2(progress3, MAX_DISTANCE_PROGRESS, timeUsed3 * 1000, false, new OnAnimationEndListener() {
-                @Override
-                public void onAnimationEnd(Animation animation) {
-//                    if (timeUsed3 == TIME_VIDEO3) {
-//                        currentVideo = "";
-//                        QuickAnim.changeImageWithFade(play_icon3, playImg, 300, null);
-//                        emptyStatus = true;
-//                        QuickAnim.fadeOut(light_img, false, null);
-//                        QuickAnim.scale(container3, 1.0f, null);
-//                        video3_isPlay = false;
-//                        progressBar_video3.setProgress(0);
-//                        tempPuase = 0;
-//                        image1.setImageBitmap(oImage1);
-//                        image2.setImageBitmap(oImage2);
-////                QuickAnim.fadeIn(play_icon3, null);
-//                        QuickAnim.fadeIn(text_filter_video3, null);
-//                        filter_video3.setAlpha(1.0f);
-//                        QuickAnim.expandViewWidthTo(filter_video3, 450, 1000, false, null);
-//                        QuickAnim.slideYAxisTo(progressBar_video3, 600, 0, 0, null);
-//                        QuickAnim.fadeOut(progress3, false, new OnAnimationEndListener() {
-//                            @Override
-//                            public void onAnimationEnd(Animation animation) {
-//                                QuickAnim.collapseViewWidth(progress3, 500, false, false, null);
-//                            }
-//                        });
-//                        QuickAnim.slideYAxisTo(black_progress3, 600, 0, 0, null);
-//                        QuickAnim.fadeOut(text_playing_video3, false, null);
-//                        image1.setAlpha(1.0f);
-//                        image2.setAlpha(1.0f);
-//                        play_icon1.setAlpha(1.0f);
-//                        play_icon2.setAlpha(1.0f);
-//                        filter_video1.setAlpha(1.0f);
-//                        filter_video2.setAlpha(1.0f);
-//                        text_filter_video1.setAlpha(1.0f);
-//                        text_filter_video2.setAlpha(1.0f);
-//                        QuickAnim.fadeOut(border3, false, null);
-//                    }
-                }
-            });
-//            progressBar_video3.setProgress((int) ((System.currentTimeMillis() - startTime) / 1000) + tempPuase);
-//            Log.e("Current time Video 3", ((System.currentTimeMillis() - startTime) / 1000) + tempPuase + "");
-
-//            if (timeUsed3 == 0) {
-//                currentVideo = "";
-//                QuickAnim.changeImageWithFade(play_icon3, playImg, 300, null);
-//                emptyStatus = true;
-//                QuickAnim.fadeOut(light_img, false, null);
-//                QuickAnim.scale(container3, 1.0f, null);
-//                video3_isPlay = false;
-//                progressBar_video3.setProgress(0);
-//                tempPuase = 0;
-//                image1.setImageBitmap(oImage1);
-//                image2.setImageBitmap(oImage2);
-////                QuickAnim.fadeIn(play_icon3, null);
-//                QuickAnim.fadeIn(text_filter_video3, null);
-//                filter_video3.setAlpha(1.0f);
-//                QuickAnim.expandViewWidthTo(filter_video3, 450, 1000, false, null);
-//                QuickAnim.slideYAxisTo(progressBar_video3, 600, 0, 0, null);
-//                QuickAnim.fadeOut(progress3, false, new OnAnimationEndListener() {
-//                    @Override
-//                    public void onAnimationEnd(Animation animation) {
-//                        QuickAnim.collapseViewWidth(progress3, 500, false, false, null);
-//                    }
-//                });
-//                QuickAnim.slideYAxisTo(black_progress3, 600, 0, 0, null);
-//                QuickAnim.fadeOut(text_playing_video3, false, null);
-//                image1.setAlpha(1.0f);
-//                image2.setAlpha(1.0f);
-//                play_icon1.setAlpha(1.0f);
-//                play_icon2.setAlpha(1.0f);
-//                filter_video1.setAlpha(1.0f);
-//                filter_video2.setAlpha(1.0f);
-//                text_filter_video1.setAlpha(1.0f);
-//                text_filter_video2.setAlpha(1.0f);
-//                QuickAnim.fadeOut(border3, false, null);
-//            }
-
-//            Runnable r = new Runnable() {
-//                @Override
-//                public void run() {
-//                    seek3_update();
-//                }
-//            };
-//            new Handler().postDelayed(r, 1000);
-//        }
+            QuickAnim.expandViewWidthTo2(progress3, MAX_DISTANCE_PROGRESS, timeUsed3 * 1000, false, null);
     }
 
     public void pauseProgress3() {
@@ -1343,10 +995,6 @@ public class MainActivity extends AppCompatActivity {
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
-//                    circle_icon1.setScaleX(1.0f);
-//                    circle_icon1.setScaleY(1.0f);
-//                    circle_icon1.setAlpha(1.0f);
-//                    circle_icon1.setVisibility(View.VISIBLE);
                     animationButton1();
                 }
             };
@@ -1365,10 +1013,6 @@ public class MainActivity extends AppCompatActivity {
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
-//                    circle_icon2.setScaleX(1.0f);
-//                    circle_icon2.setScaleY(1.0f);
-//                    circle_icon2.setAlpha(1.0f);
-//                    circle_icon2.setVisibility(View.VISIBLE);
                     animationButton2();
                 }
             };
@@ -1387,41 +1031,12 @@ public class MainActivity extends AppCompatActivity {
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
-//                    circle_icon3.setScaleX(1.0f);
-//                    circle_icon3.setScaleY(1.0f);
-//                    circle_icon3.setAlpha(1.0f);
-//                    circle_icon3.setVisibility(View.VISIBLE);
                     animationButton3();
                 }
             };
             new Handler().postDelayed(r, 1500);
         }
     }
-
-    /**
-     * Still need fix bug
-     */
-//    public void updateText() {
-//        if (video1_isPlay) {
-//            String text = "";
-//            if (countDot > 3) {
-//                text = "PLAYING";
-//                countDot = 0;
-//            } else {
-//                text = text_playing_video1.getText().toString() + " .";
-//            }
-//            text_playing_video1.setText(text);
-//            countDot++;
-//        }
-//
-//        Runnable r = new Runnable() {
-//            @Override
-//            public void run() {
-//                updateText();
-//            }
-//        };
-//        new Handler().postDelayed(r, 600);
-//    }
 
     /**
      * Set full screen.
